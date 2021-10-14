@@ -8,13 +8,18 @@ numero_twilio = numero_twilio #Faz ligacao/sms
 
 client = Client(account_sid, auth_token)
 
-# mensagem = """
-#     <Response>
-#         <Say language="pt-BR">
-#             Testando mensagem programada
-#         </Say>
-#     </Response>
-# """
+escolha = int(input(f"Número: {meu_numero}\n1 - Ligar\n2 - Mensagem"))
 
-#ligacao = client.calls.create(to=meu_numero, from_=numero_twilio, twiml=mensagem)
-mensage = client.messages.create(to=meu_numero, from_=numero_twilio, body="Olá")
+if(escolha == 1):
+    mensagem = """
+        <Response>
+            <Say language="pt-BR">
+                Palmeiras não tem mundial
+            </Say>
+        </Response>
+    """
+
+    ligacao = client.calls.create(to=meu_numero, from_=numero_twilio, twiml=mensagem)
+
+if(escolha == 2):
+    mensagem = client.messages.create(to=meu_numero, from_=numero_twilio, body="Olá")
